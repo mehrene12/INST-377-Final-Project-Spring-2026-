@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerPath — Home</title>
+  <link rel="stylesheet" href="styles/styles.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<nav>
+  <h1>🎯 CareerPath</h1>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="jobs.html">Jobs</a>
+    <a href="gradschool.html">Grad School</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h2>Plan Your Future</h2>
+  <p>Explore US job opportunities, compare salaries, and find the right grad school for your career path.</p>
+  <a href="jobs.html">Browse Jobs →</a>
+</div>
+
+<div class="container">
+  <div class="chart-box">
+    <div class="section-title">💰 Salary Comparison by Job Title</div>
+    <canvas id="salaryChart" height="100"></canvas>
+  </div>
+
+  <div class="section-title">⭐ Your Saved Careers</div>
+  <div class="card-grid" id="savedCareers">
+    <p class="empty">Loading...</p>
+  </div>
+</div>
+
+<footer>CareerPath © 2026 — INST 377 Final Project</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
