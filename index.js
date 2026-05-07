@@ -1,4 +1,5 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const supabaseClient = require('@supabase/supabase-js');
@@ -31,22 +32,30 @@ app.post('/api/careers', async (req, res) => {
   else { res.json(data); }
 });
 
-// ENDPOINT 3 — GET jobs from Arbeitnow + exchange rate
+// ENDPOINT 3 — GET jobs from USAJobs (US government job board)
 app.get('/api/jobs', async (req, res) => {
   try {
-    const jobsRes = await fetch('https://www.arbeitnow.com/api/job-board-api');
+    const keyword = req.query.keyword || 'technology';
+    
+    const jobsRes = await fetch(
+      `https://data.usajobs.gov/api/search?Keyword=${keyword}&ResultsPerPage=20`,
+      {
+        headers: {
+          'Host': 'data.usajobs.gov',
+          'User-Agent': process.env.USAJOBS_EMAIL,
+          'Authorization-Key': process.env.USAJOBS_KEY
+        }
+      }
+    );
     const jobsData = await jobsRes.json();
 
-    const ratesRes = await fetch('https://open.er-api.com/v6/latest/USD');
-    const ratesData = await ratesRes.json();
-
-    const jobs = jobsData.data.slice(0, 20).map(job => ({
-      title: job.title,
-      company: job.company_name,
-      location: job.location,
-      tags: job.tags,
-      url: job.url,
-      eur_rate: ratesData.rates.EUR
+    const jobs = jobsData.SearchResult.SearchResultItems.map(item => ({
+      title: item.MatchedObjectDescriptor.PositionTitle,
+      company: item.MatchedObjectDescriptor.OrganizationName,
+      location: item.MatchedObjectDescriptor.PositionLocationDisplay,
+      salary_min: item.MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange,
+      salary_max: item.MatchedObjectDescriptor.PositionRemuneration[0].MaximumRange,
+      url: item.MatchedObjectDescriptor.PositionURI
     }));
 
     res.json(jobs);
@@ -54,7 +63,6 @@ app.get('/api/jobs', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch jobs' });
   }
 });
-
 app.listen(port, () => {
   console.log(`App running on port: ${port}`);
 });
