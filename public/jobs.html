@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerPath — Jobs</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+
+<nav>
+  <h1>🎯 CareerPath</h1>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="jobs.html">Jobs</a>
+    <a href="gradschool.html">Grad School</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<div class="container">
+  <h2 style="font-size:1.8rem; margin-bottom:24px;">🇺🇸 US Government Jobs</h2>
+
+  <div class="search-bar">
+    <input type="text" id="keyword" placeholder="Search by keyword e.g. nursing, engineering..."/>
+    <button class="btn btn-primary" onclick="loadJobs()">Search</button>
+  </div>
+
+  <div id="map"></div>
+
+  <div class="section-title">Job Listings</div>
+  <div class="card-grid" id="jobsContainer">
+    <p class="empty">Search for jobs above...</p>
+  </div>
+</div>
+
+<footer>CareerPath © 2026 — INST 377 Final Project</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="scripts/jobs.js"></script>
+</body>
+</html>
