@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerPath — Grad School</title>
+  <link rel="stylesheet" href="styles/styles.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+
+<nav>
+  <h1>🎯 CareerPath</h1>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="jobs.html">Jobs</a>
+    <a href="gradschool.html">Grad School</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<div class="container">
+  <h2 style="font-size:1.8rem; margin-bottom:24px;">🎓 Explore Grad School Countries</h2>
+
+    <div class="search-bar">
+        <input type="text" id="majorInput" placeholder="Enter your major e.g. computer science, business, engineering..."/>
+        <button class="btn btn-primary" onclick="searchUniversities()">Find Universities</button>
+    </div>
+
+  <div id="map"></div>
+
+  <div class="section-title">Country Info</div>
+  <div class="card-grid" id="countryContainer">
+    <p class="empty">Search for a country above to see details...</p>
+  </div>
+</div>
+
+<footer>CareerPath © 2026 — INST 377 Final Project</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="scripts/gradschool.js"></script>
+</body>
+</html>
