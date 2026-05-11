@@ -1,5 +1,4 @@
 const map = L.map('map').setView([20, 0], 2);
-
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenStreetMap contributors'
 }).addTo(map);
@@ -31,21 +30,29 @@ async function searchUniversities() {
     `).join('');
 
     const uniqueCountries = [...new Set(unis.map(u => u.country))];
+
     for (const country of uniqueCountries) {
-      const geoRes = await fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(country)}`);
-      const geoData = await geoRes.json();
-      if (Array.isArray(geoData) && geoData[0]?.latlng) {
-        const [lat, lng] = geoData[0].latlng;
-        const marker = L.marker([lat, lng])
-          .addTo(map)
-          .bindPopup(`<b>${country}</b><br>Top destination for ${major}`);
-        markers.push(marker);
+      try {
+        const geoRes = await fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(country)}`);
+        if (!geoRes.ok) continue; // skip if bad response, don't crash
+        const geoData = await geoRes.json();
+        if (Array.isArray(geoData) && geoData[0]?.latlng) {
+          const [lat, lng] = geoData[0].latlng;
+          const marker = L.marker([lat, lng])
+            .addTo(map)
+            .bindPopup(`<b>${country}</b><br>Top destination for ${major}`);
+          markers.push(marker);
+        }
+      } catch (geoErr) {
+        // Map pin failed for this country — log it but keep going
+        console.warn(`Could not load map pin for ${country}:`, geoErr);
       }
     }
+
     map.setView([20, 0], 2);
 
   } catch (err) {
-    console.error('Error:', err);
+    console.error('Error loading universities:', err);
     container.innerHTML = '<p class="empty">Error loading data. Please try again.</p>';
   }
 }
