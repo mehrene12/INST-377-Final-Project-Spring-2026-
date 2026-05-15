@@ -11,7 +11,7 @@ async function loadSavedCareers() {
       container.innerHTML = data.map(c => `
         <div class="card">
           <h3>${c.title}</h3>
-          <p>${c.country}</p>
+          <p>📍 ${c.country}</p>
           <p class="salary"> ${c.avg_salary}</p>
         </div>
       `).join('');
