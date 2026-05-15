@@ -29,7 +29,7 @@ async function loadJobs() {
       <div class="card">
         <h3>${job.title}</h3>
         <p>${job.company}</p>
-        <p>${job.location}</p>
+        <p>📍 ${job.location}</p>
         <p class="salary">$${parseInt(job.salary_min).toLocaleString()} — $${parseInt(job.salary_max).toLocaleString()}</p>
         <button class="btn" onclick="window.open('${job.url}', '_blank')">View Job</button>
         <button class="btn btn-primary" onclick="saveCareer('${job.title.replace(/'/g, '')}', '${job.salary_max}', '${job.location}')">
