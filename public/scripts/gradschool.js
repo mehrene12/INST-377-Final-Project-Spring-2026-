@@ -22,10 +22,10 @@ async function searchUniversities() {
 
     container.innerHTML = unis.map(u => `
       <div class="card">
-        <h3>🏛️ ${u.name}</h3>
-        <p>🌍 ${u.country}</p>
+        <h3> ${u.name}</h3>
+        <p> ${u.country}</p>
         <p>Best for: ${data.major}</p>
-        <p>🌐 <a href="${u.url}" target="_blank" style="color:#800000;">Visit Website</a></p>
+        <p> <a href="${u.url}" target="_blank" style="color:#800000;">Visit Website</a></p>
       </div>
     `).join('');
 
