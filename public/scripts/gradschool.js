@@ -24,8 +24,8 @@ async function searchUniversities() {
       <div class="card">
         <h3>🏛️ ${u.name}</h3>
         <p>🌍 ${u.country}</p>
-        <p>🎓 Best for: ${data.major}</p>
-        <p>🌐 <a href="${u.url}" target="_blank" style="color:#00d4aa;">Visit Website</a></p>
+        <p>Best for: ${data.major}</p>
+        <p>🌐 <a href="${u.url}" target="_blank" style="color:#800000;">Visit Website</a></p>
       </div>
     `).join('');
 
