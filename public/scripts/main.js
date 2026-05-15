@@ -38,7 +38,7 @@ async function loadSalaryChart() {
         datasets: [{
           label: 'Max Salary (USD)',
           data: salaries,
-          backgroundColor: '#00d4aa',
+          backgroundColor: '#6B2737',
           borderRadius: 6
         }]
       },

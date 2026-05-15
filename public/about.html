@@ -5,80 +5,255 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CareerPath — About</title>
   <link rel="stylesheet" href="styles/styles.css"/>
+  <style>
+    .about-section {
+      background: #FAF7F2;
+      border-radius: 6px;
+      padding: 36px;
+      border: 1px solid #D6CFC4;
+      margin-bottom: 24px;
+    }
+
+    .about-section h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #1C2B2B;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #D6CFC4;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .about-section h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 20px;
+      background: #6B2737;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .about-section p {
+      color: #6B6560;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .about-image {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-top: 20px;
+      border: 1px solid #D6CFC4;
+    }
+
+    .api-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .api-card {
+      background: #EDE8E1;
+      border-radius: 6px;
+      padding: 20px;
+      border: 1px solid #D6CFC4;
+      border-left: 3px solid #6B2737;
+    }
+
+    .api-card h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 0.98rem;
+      color: #1C2B2B;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .api-card p {
+      font-size: 0.86rem;
+      color: #6B6560;
+      line-height: 1.6;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .team-card {
+      background: #EDE8E1;
+      border-radius: 6px;
+      padding: 20px 24px;
+      border: 1px solid #D6CFC4;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .team-avatar {
+      width: 44px;
+      height: 44px;
+      background: #1C2B2B;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Georgia, serif;
+      font-size: 0.95rem;
+      color: #C9A87C;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .team-card h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 0.98rem;
+      color: #1C2B2B;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .team-card p {
+      font-size: 0.84rem;
+      color: #6B6560;
+    }
+
+    .how-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .how-step:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      border: 2px solid #6B2737;
+      color: #6B2737;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .how-step p {
+      color: #6B6560;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 <body>
+  <nav>
+    <h1>🎯 CareerPath</h1>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="gradschool.html">Grad School</a>
+      <a href="about.html" class="active">About</a>
+    </div>
+  </nav>
 
-<nav>
-  <h1>🎯 CareerPath</h1>
-  <div>
-    <a href="index.html">Home</a>
-    <a href="jobs.html">Jobs</a>
-    <a href="gradschool.html">Grad School</a>
-    <a href="about.html">About</a>
-  </div>
-</nav>
-
-<div class="hero">
-  <h2>About CareerPath</h2>
-  <p>A career planning tool built for students by students.</p>
-</div>
-
-<div class="container">
-
-  <div class="chart-box" style="margin-bottom:24px;">
-    <div class="section-title">📌 What is CareerPath?</div>
-    <p style="color:#555; line-height:1.8;">
-      CareerPath is a web application designed to help students explore career options, 
-      compare salaries, and research grad school opportunities around the world. 
-      Built as a final project for INST 377 at the University of Maryland.
-    </p>
+  <div class="hero">
+    <h2>About CareerPath</h2>
+    <p>A career planning tool built for students by students.</p>
   </div>
 
-  <div class="chart-box" style="margin-bottom:24px;">
-    <div class="section-title">🛠️ APIs Used</div>
-    <div class="card-grid">
-      <div class="card">
-        <h3>USAJobs API</h3>
-        <p>Official US government job listings with real salary data from data.usajobs.gov</p>
-      </div>
-      <div class="card">
-        <h3>REST Countries API</h3>
-        <p>Country information including population, currency, and location from restcountries.com</p>
-      </div>
-      <div class="card">
-        <h3>Supabase</h3>
-        <p>Our own database for storing and retrieving saved career paths.</p>
+  <div class="container">
+
+    <!-- WHAT IS CAREERPATH -->
+    <div class="about-section">
+      <h2>What is CareerPath?</h2>
+      <p>
+        CareerPath is a web application designed to help students explore career options,
+        compare salaries, and research graduate school opportunities around the world.
+        Built as a final project for INST 377 at the University of Maryland.
+      </p>
+      <img
+        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&auto=format&fit=crop"
+        alt="Professional career planning"
+        class="about-image"
+      />
+    </div>
+
+    <!-- APIS USED -->
+    <div class="about-section">
+      <h2>APIs Used</h2>
+      <div class="api-grid">
+        <div class="api-card">
+          <h3>USAJobs API</h3>
+          <p>Official US government job listings with real salary data sourced from data.usajobs.gov.</p>
+        </div>
+        <div class="api-card">
+          <h3>REST Countries API</h3>
+          <p>Fetches information for best universities in terms of major within each country.</p>
+        </div>
+        <div class="api-card">
+          <h3>Supabase</h3>
+          <p>Our own database for storing and retrieving saved career paths.</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="chart-box" style="margin-bottom:24px;">
-    <div class="section-title">👥 Our Team</div>
-    <div class="card-grid">
-      <div class="card">
-        <h3>Malaika Asif</h3>
-        <p>Role: Backend & Database</p>
-      </div>
-      <div class="card">
-        <h3>Mehrene Ullah</h3>
-        <p>Role: Frontend & Design</p>
+    <!-- OUR TEAM -->
+    <div class="about-section">
+      <h2>Our Team</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">MA</div>
+          <div>
+            <h3>Malaika Asif</h3>
+            <p>Role: Backend & Database</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">MU</div>
+          <div>
+            <h3>Mehrene Ullah</h3>
+            <p>Role: Frontend & Design</p>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- HOW TO USE -->
+    <div class="about-section">
+      <h2>How to Use</h2>
+      <div class="how-step">
+        <div class="step-number">1</div>
+        <p>Go to the <strong>Jobs</strong> page to search US government job listings by keyword.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-number">2</div>
+        <p>Save interesting careers using the <strong>Save Career</strong> button on any job listing.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-number">3</div>
+        <p>Go to <strong>Grad School</strong> to search by major and explore top universities around the world.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-number">4</div>
+        <p>Return to <strong>Home</strong> to see your saved careers and salary comparisons.</p>
+      </div>
+    </div>
+
   </div>
 
-  <div class="chart-box">
-    <div class="section-title">❓ How to Use</div>
-    <p style="color:#555; line-height:1.8;">
-      1. Go to the <strong>Jobs</strong> page to search US government job listings by keyword.<br/>
-      2. Save interesting careers using the ⭐ Save button.<br/>
-      3. Go to <strong>Grad School</strong> to explore countries for graduate study.<br/>
-      4. Return to <strong>Home</strong> to see your saved careers and salary comparisons.
-    </p>
-  </div>
-
-</div>
-
-<footer>CareerPath © 2026 — INST 377 Final Project</footer>
-
+  <footer>CareerPath — INST 377 Final Project</footer>
 </body>
 </html>

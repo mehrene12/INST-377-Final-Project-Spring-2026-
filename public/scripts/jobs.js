@@ -1,6 +1,5 @@
 // Initialize Leaflet map centered on USA
 const map = L.map('map').setView([39.5, -98.35], 4);
-
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenStreetMap contributors'
 }).addTo(map);
@@ -29,17 +28,21 @@ async function loadJobs() {
     container.innerHTML = jobs.map((job, i) => `
       <div class="card">
         <h3>${job.title}</h3>
-        <p>🏢 ${job.company}</p>
-        <p>📍 ${job.location}</p>
-        <p class="salary">💵 $${parseInt(job.salary_min).toLocaleString()} — $${parseInt(job.salary_max).toLocaleString()}</p>
-        <a href="${job.url}" target="_blank" class="btn" style="text-align:center; display:block; text-decoration:none;">View Job</a>
-        <button class="btn btn-primary" onclick="saveCareer('${job.title.replace(/'/g, '')}', '${job.salary_max}', '${job.location}')">⭐ Save Career</button>
+        <p>${job.company}</p>
+        <p>${job.location}</p>
+        <p class="salary">$${parseInt(job.salary_min).toLocaleString()} — $${parseInt(job.salary_max).toLocaleString()}</p>
+        <button class="btn" onclick="window.open('${job.url}', '_blank')">View Job</button>
+        <button class="btn btn-primary" onclick="saveCareer('${job.title.replace(/'/g, '')}', '${job.salary_max}', '${job.location}')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#1C2B2B" style="vertical-align:middle; margin-right:6px; margin-bottom:2px;">
+            <path d="M6 2a2 2 0 0 0-2 2v18l8-4 8 4V4a2 2 0 0 0-2-2H6z"/>
+          </svg>
+          Save Career
+        </button>
       </div>
     `).join('');
 
     // Add markers to map for each job
     jobs.forEach(job => {
-      // Use random US coords offset since USAJobs doesn't return lat/lng
       const lat = 37 + (Math.random() * 10 - 5);
       const lng = -98 + (Math.random() * 30 - 15);
       const marker = L.marker([lat, lng])
@@ -68,11 +71,11 @@ async function saveCareer(title, salary, location) {
     });
     const data = await res.json();
     if (data) {
-      alert(`✅ "${title}" saved to your careers!`);
+      alert(`"${title}" saved to your careers!`);
     }
   } catch (err) {
     console.error('Error saving career:', err);
-    alert('❌ Failed to save career.');
+    alert('Failed to save career.');
   }
 }
 
