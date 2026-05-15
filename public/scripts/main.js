@@ -13,7 +13,7 @@ async function loadSavedCareers() {
           <h3>${c.title}</h3>
           <p>📍 ${c.country}</p>
           <p class="salary"> ${c.avg_salary}</p>
-          <button class="btn" onclick="deleteCareer(${c.id})">🗑️ Remove</button>
+          <button class="btn" onclick="deleteCareer(${c.id})">Remove</button>
         </div>
       `).join('');
     }
