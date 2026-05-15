@@ -13,6 +13,7 @@ async function loadSavedCareers() {
           <h3>${c.title}</h3>
           <p>📍 ${c.country}</p>
           <p class="salary"> ${c.avg_salary}</p>
+          <button class="btn" onclick="deleteCareer(${c.id})">🗑️ Remove</button>
         </div>
       `).join('');
     }
@@ -21,6 +22,14 @@ async function loadSavedCareers() {
   }
 }
 
+async function deleteCareer(id) {
+  try {
+    await fetch(`/api/careers/${id}`, { method: 'DELETE' });
+    loadSavedCareers(); // refresh the list
+  } catch (err) {
+    console.error('Error deleting career:', err);
+  }
+}
 // FETCH 2 — Load jobs and build salary chart using Chart.js
 async function loadSalaryChart() {
   try {

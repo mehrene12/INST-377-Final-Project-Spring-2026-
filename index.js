@@ -126,6 +126,16 @@ app.get('/api/universities', async (req, res) => {
   res.json({ major, universities: results });
 });
 
+// ENDPOINT 5 — DELETE a saved career
+app.delete('/api/careers/:id', async (req, res) => {
+  const { id } = req.params;
+  const { error } = await supabase
+    .from('careers')
+    .delete()
+    .eq('id', id);
+  if (error) { res.status(500).send(error); }
+  else { res.json({ message: 'Career deleted' }); }
+});
 // app.listen MUST be last
 app.listen(port, () => {
   console.log(`App running on port: ${port}`);
