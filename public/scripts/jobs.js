@@ -33,7 +33,7 @@ async function loadJobs() {
         <p class="salary">$${parseInt(job.salary_min).toLocaleString()} — $${parseInt(job.salary_max).toLocaleString()}</p>
         <button class="btn" onclick="window.open('${job.url}', '_blank')">View Job</button>
         <button class="btn btn-primary" onclick="saveCareer('${job.title.replace(/'/g, '')}', '${job.salary_max}', '${job.location}')">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#1C2B2B" style="vertical-align:middle; margin-right:6px; margin-bottom:2px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#e3bd23" style="vertical-align:middle; margin-right:6px; margin-bottom:2px;">
             <path d="M6 2a2 2 0 0 0-2 2v18l8-4 8 4V4a2 2 0 0 0-2-2H6z"/>
           </svg>
           Save Career

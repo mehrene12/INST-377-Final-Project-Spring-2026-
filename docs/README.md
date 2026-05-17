@@ -8,12 +8,12 @@ The objective of this project is to ensure that students feel confident in their
 
 ## Target Browsers
 
-CareerPath is designed primarily for **deskstop browsers** but is accessible on mobile devices as well.
+CareerPath is designed primarily for **desktop browsers** but is accessible on mobile devices as well.
 
 Supported browsers include:
 
 - Google Chrome (recommended)
-- Mozilla Firebox
+- Mozilla Firefox
 - Apple Safari
 - Microsoft Edge
 
@@ -167,6 +167,16 @@ Saves a new career to the Supabase database.
 
 ---
 
+### `DELETE /api/careers/:id`
+Deletes a saved career by ID.
+
+**Example:** `DELETE /api/careers/3`
+
+**Response:**
+```json
+{ "message": "Career deleted" }
+```
+
 ### `GET /api/jobs`
 
 Fetches job listings from the USAJobs external API.
@@ -216,7 +226,7 @@ Returns a curated list of top universities for a given major.
 
 - **Map pins on Grad School page:** The REST Countries API (`restcountries.com`) is occasionally unavailable. When this happens, map pins will not appear on the map, but university cards will still display correctly. This is handled gracefully with a try/catch so it does not crash the page.
 - **Supabase RLS:** The `careers` table requires Row Level Security to be disabled for write operations to work. If careers are not saving, verify that RLS is disabled on the `careers` table in the Supabase dashboard.
-- **No unsave functionality:** Users are currently unable to remove saved careers from the home page. Once a career is saved it cannot be deleted through the UI. This is a planned fix for future development.
+- **No duplicate prevention:** Saving the same job multiple times adds multiple entries to the database with no warning to the user.
 
 ---
 
@@ -226,5 +236,5 @@ Returns a curated list of top universities for a given major.
 - **Expanded university data:** Add more majors and pull university data from a live external API rather than a hardcoded list
 - **Job filtering:** Allow users to filter job listings by salary range, location, or agency
 - **Mobile responsiveness:** Further improve the layout and usability on smaller screen sizes
-- **Automated testing:** Implement a test suite using Jest or Mocha to cover API endpoints and frontend interactions
-- **Delete saved careers:** Allow users to remove careers they have saved from the home page
+
+
